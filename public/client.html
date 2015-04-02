@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script type="text/javascript" src="javascripts/jquery-1.11.2.js" charset="utf-8"></script>
+    <script type="text/javascript" src="javascripts/jquery.serializejson.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+    $( document ).ready(function() {
+        console.log( 'ready!' );
+        $("#save").on("click", function() {
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            xmlhttp.open("POST", "/teams");
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.send(JSON.stringify($('#teams-listing').serializeJSON()));
+        });
+    });
+    </script>
+</head>
+<body>
+    <form id="teams-listing">
+        Team Name: <input type="text" id="teamName" name="teamName" />
+        Game Start Time: <input type="text" id="gameTime" name="gameTime" />
+        <input type="button" id="save" value="Save" />
+    </form>
+</body>
+</html>

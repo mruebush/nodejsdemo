@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = dataLoaded;
+        xmlhttp.open("GET", "/teams", true);
+        xmlhttp.send();
+
+    function dataLoaded(){
+        if(this.status == 200 &&
+        this.responseXML != null  {
+        // success!
+            //generate listing content
+            var listing = JSON.parse(xmlhttp.responseXML);
+            buildListing(listing)
+        } else {
+            // something went wrong
+
+        }
+    }
+
+    function buildListing(arr) {
+        var out = "";
+        var i;
+        for(i = 0; i < arr.length; i++) {
+            out += '<ul><li>' + arr[i].name + '------' + '</li>';
+        }
+        document.getElementById('content').innerHTML = out;
+    }
+
+    </script>
+</head>
+<body>
+    <div id="errormessage"></div>
+    <div id="content"></div>
+<ul>
+    <li></li>
+</ul>
+</body>
+</html>
+
+
